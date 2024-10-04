@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mentoracademyproject/core/utils/context_extension.dart';
+import 'package:mentoracademyproject/core/utils/extensions/context_extension.dart';
 import 'package:mentoracademyproject/features/auth/presentation/view_model/cubits/login_cubit/login_cubit.dart';
 import 'package:mentoracademyproject/features/auth/presentation/views/ui/sign_up_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -9,7 +9,7 @@ import '../../../../home/presentation/views/ui/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
-
+  static String id = "LoginScreen";
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
           isLoading = false;
           context.showSnackBar('User Logged In Successfully!');
           Navigator.of(context).push(MaterialPageRoute(builder: (builder){
-            return  MyHome();
+            return HomeScreen();
           }));
         } else if(state is LoginFailure) {
           isLoading = false;
